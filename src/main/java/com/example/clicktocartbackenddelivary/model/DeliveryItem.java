@@ -17,8 +17,8 @@ public class DeliveryItem {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private int qty;
-    private double price;
-    private int itemID;
+    private double totalPrice;
+    private int itemId;
     @ManyToOne
     @JoinColumn(name="deliveryId")
     private Delivery delivery;
