@@ -16,10 +16,16 @@ public class DeliveryItemController{
     @Autowired
     DeliveryItemService deliveryItemService;
 
-    @PostMapping
+    @PostMapping("/addDeliveryItem")
 //    @PreAuthorize("hasRole('MODERATOR')")
     public DeliveryItem addDeliveryItem (@RequestBody DeliveryItem deliveryItem){
         return deliveryItemService.addDeliveryItem(deliveryItem);
+    }
+
+    @PostMapping
+//    @PreAuthorize("hasRole('MODERATOR')")
+    public List<DeliveryItem> addQuestions(@RequestBody List<DeliveryItem> deliveryItems){
+        return deliveryItemService.addDeliveryItems(deliveryItems);
     }
 
     @GetMapping

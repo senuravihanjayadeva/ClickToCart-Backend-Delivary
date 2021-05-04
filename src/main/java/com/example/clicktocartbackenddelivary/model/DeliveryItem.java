@@ -1,5 +1,6 @@
 package com.example.clicktocartbackenddelivary.model;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -18,8 +19,12 @@ public class DeliveryItem {
     private int qty;
     private double price;
     private int itemID;
-    private int delID;
     @ManyToOne
     @JoinColumn(name="deliveryId")
     private Delivery delivery;
+
+    @JsonBackReference
+    public Delivery getDelivery() {
+        return delivery;
+    }
 }

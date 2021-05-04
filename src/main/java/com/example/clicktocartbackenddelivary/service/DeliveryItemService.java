@@ -14,6 +14,9 @@ public class DeliveryItemService {
     public DeliveryItem addDeliveryItem(DeliveryItem deliveryItem) {
         return deliveryItemRepository.save(deliveryItem);
     }
+    public List<DeliveryItem> addDeliveryItems(List<DeliveryItem> deliveryItems){
+        return deliveryItemRepository.saveAll(deliveryItems);
+    }
     public List<DeliveryItem> getAllDeliveyItems() {
         return deliveryItemRepository.findAll();
     }
