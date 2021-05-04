@@ -1,5 +1,6 @@
 package com.example.clicktocartbackenddelivary.model;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -27,4 +28,8 @@ public class Delivery {
     @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST,mappedBy = "delivery")
     private List<DeliveryItem> deliveryItems;
 
+    @JsonManagedReference
+    public List<DeliveryItem> getDeliveryItems() {
+        return deliveryItems;
+    }
 }

@@ -1,6 +1,5 @@
 package com.example.clicktocartbackenddelivary.controller;
 
-
 import com.example.clicktocartbackenddelivary.model.DeliveryItem;
 import com.example.clicktocartbackenddelivary.service.DeliveryItemService;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -16,10 +15,14 @@ public class DeliveryItemController{
     @Autowired
     DeliveryItemService deliveryItemService;
 
-    @PostMapping
-//    @PreAuthorize("hasRole('MODERATOR')")
+    @PostMapping("/addDeliveryItem")
     public DeliveryItem addDeliveryItem (@RequestBody DeliveryItem deliveryItem){
         return deliveryItemService.addDeliveryItem(deliveryItem);
+    }
+
+    @PostMapping("/{deliveryid}")
+    public List<DeliveryItem> addDeliveryItems(@RequestBody List<DeliveryItem> deliveryItems, @PathVariable int deliveryid){
+        return deliveryItemService.addDeliveryItems(deliveryItems,deliveryid);
     }
 
     @GetMapping
@@ -33,7 +36,6 @@ public class DeliveryItemController{
     }
 
     @DeleteMapping("/{id}")
-//    @PreAuthorize("hasRole('MODERATOR')")
     public String deleteDeliveryItemById(@PathVariable int id){
         return deliveryItemService.deleteDeliveryItemByID(id);
     }
